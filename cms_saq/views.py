@@ -14,12 +14,10 @@ ANSWER_RE = re.compile(r'^[\w-]+(,[\w-]+)*$')
 
 @require_POST
 def _submit(request):
-
     post_data = datastructures.MultiValueDict(request.POST)
     submission_set_tag = post_data.pop('submission_set_tag', '')
 
     for question_slug, answers in post_data.iteritems():
-
         # validate the question
         try:
             question = Question.objects.get(
@@ -123,8 +121,10 @@ def scores(request):
     submissions = Submission.objects.filter(
         user=request.user, question__in=slugs,
     )
-    submissions = [[s.question, {'answer': s.answer, 'score': s.score}]
-            for s in submissions]
+    submissions = [
+        [s.question, {'answer': s.answer, 'score': s.score}]
+        for s in submissions
+    ]
     data = {
         "questions": slugs,
         "submissions": dict(submissions),
@@ -151,9 +151,7 @@ def change_answer_set(request):
         submission_set.delete()
     else:
         # Create submission set of current answers
-        _create_submission_set(
-            request, submission_set.tag
-        )
+        _create_submission_set(request, submission_set.tag)
 
         # Unbind our submission set (puts submissions back as 'editable')
         submission_set.submissions.update(
@@ -163,6 +161,6 @@ def change_answer_set(request):
         # Delete this submission set
         submission_set.delete()
 
-
     return HttpResponse("OK")
+
 # TODO benchmarking
