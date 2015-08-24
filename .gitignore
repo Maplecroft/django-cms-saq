@@ -1,3 +1,4 @@
+.idea/
 *.pyc
 *.swp
 test_project/db.sqlite

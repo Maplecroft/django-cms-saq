@@ -5,7 +5,7 @@ from cms.models import CMSPlugin, Page, Placeholder
 from cms.models.fields import PageField
 from taggit.managers import TaggableManager
 
-from cms.plugins.text.models import AbstractText
+from djangocms_text_ckeditor.models import AbstractText
 
 
 class QuestionnaireText(AbstractText):
