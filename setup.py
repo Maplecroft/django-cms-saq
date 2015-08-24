@@ -8,6 +8,12 @@ version = cms_saq.__version__
 
 requires = [
     'beautifulsoup4>=4.3.1',
+    'djangocms-text-ckeditor',
+    'djangocms-picture',
+    'djangocms-link',
+    'djangocms-file',
+    'djangocms-snippet',
+    'djangocms-googlemap'
 ]
 
 setup(

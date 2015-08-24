@@ -8,12 +8,12 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
 from cms_saq.models import Question, Answer, GroupedAnswer, Submission, \
-        FormNav, ProgressBar, SectionedScoring, ScoreSection, BulkAnswer, \
-        QuestionnaireText, SubmissionSetReview
+    FormNav, ProgressBar, SectionedScoring, ScoreSection, BulkAnswer, \
+    QuestionnaireText, SubmissionSetReview
 
 
-from cms.plugins.text.cms_plugins import TextPlugin
-from cms.plugins.text.models import Text
+from djangocms_text_ckeditor.cms_plugins import TextPlugin
+from djangocms_text_ckeditor.models import Text
 
 from bs4 import BeautifulSoup
 
