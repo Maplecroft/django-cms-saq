@@ -1,10 +1,11 @@
 import re
+import json
 
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
 from django.views.decorators.cache import never_cache
-from django.utils import simplejson, datastructures
+from django.utils import datastructures
 from django.conf import settings
 
 from cms_saq.models import Question, Answer, Submission, SubmissionSet
@@ -130,7 +131,7 @@ def scores(request):
         "submissions": dict(submissions),
         "complete": len(submissions) == len(slugs)
     }
-    return HttpResponse(simplejson.dumps(data), mimetype="application/json")
+    return HttpResponse(json.dumps(data), mimetype="application/json")
 
 
 @require_POST

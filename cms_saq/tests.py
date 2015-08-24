@@ -5,11 +5,12 @@ when you run "manage.py test".
 Replace this with more appropriate tests for your application.
 """
 
+import json
+
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.test.client import Client, RequestFactory
-from django.utils import simplejson
 from django.template import Template, RequestContext
 
 from cms_saq.models import Submission, Question
@@ -76,7 +77,7 @@ class ScoresTest(TestCase):
         self.client.login(username="uncle_bill", password="password")
         resp = self.client.get(reverse('cms_saq_scores'), {'q': self.questions})
         self.assertEqual(resp.status_code, 200, resp.content)
-        data = simplejson.loads(resp.content)
+        data = json.loads(resp.content)
         self.assertEqual(data, {
             'questions': self.questions,
             'complete': True,
@@ -102,7 +103,7 @@ class ScoresTest(TestCase):
         self.client.login(username='auntie_rach', password='password')
         resp = self.client.get(reverse('cms_saq_scores'), {'q': self.questions})
         self.assertEqual(resp.status_code, 200, resp.content)
-        data = simplejson.loads(resp.content)
+        data = json.loads(resp.content)
         self.assertEqual(data, {
             'questions': self.questions,
             'complete': False,
