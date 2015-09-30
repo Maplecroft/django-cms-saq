@@ -131,7 +131,7 @@ def scores(request):
         "submissions": dict(submissions),
         "complete": len(submissions) == len(slugs)
     }
-    return HttpResponse(json.dumps(data), mimetype="application/json")
+    return HttpResponse(json.dumps(data), content_type="application/json")
 
 
 @require_POST
