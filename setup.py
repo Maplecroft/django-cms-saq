@@ -28,6 +28,7 @@ setup(
     packages=[
         'cms_saq', 'cms_saq.migrations', 'cms_saq.management',
         'cms_saq.management.commands', 'cms_saq.templatetags',
+        'cms_saq.south_migrations'
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
